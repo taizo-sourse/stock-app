@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>買い候補銘柄</title>
+</head>
+<body>
+  <h1>今日の買い候補</h1>
+  <div id="result">読み込み中...</div>
+
+  <script>
+    // ここにあなたのGASのURLを貼る
+    fetch(https://script.google.com/a/macros/oita-u.ac.jp/s/AKfycbxg7zDgH3uCg1VsqdoxpB2RzUh2q59MGc4ZRZstqIdARlobS0ypxpV4kTqGiCQMkjFi/exec)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("result").innerHTML =
+          data.map(x => `<p>${x.code} : ${x.price}円（出来高:${x.volume}）</p>`).join("");
+      });
+  </script>
+</body>
+</html>
